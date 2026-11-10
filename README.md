@@ -25,7 +25,7 @@ Run this command from the repository root.
 python3 run_fractional_did_mc.py
 ```
 
-This experiment requires NumPy and pandas. It runs 5,000 replications with seed `20260502` and writes two CSVs in the working directory. Appendix A.4 uses the [results by lag length](fractional_did_mc_results_with_K_robustness.csv). Under selection on the pretreatment state, the estimated biases of the oracle fractional estimator are 0.044, 0.027, and 0.017 for 20, 30, and 40 lags. The [original main table](fractional_did_mc_results.csv) reports the 30-lag specification.
+This experiment requires NumPy and pandas. It runs 5,000 replications with seed `20260502` and writes the [results by lag length](fractional_did_mc_results_with_K_robustness.csv), which Appendix A.4 uses, to the working directory. Under selection on the pretreatment state, the estimated biases of the oracle fractional estimator are 0.044, 0.027, and 0.017 for 20, 30, and 40 lags. The script also writes `fractional_did_mc_results.csv`, a copy of the 30-lag rows alone, which is not kept in this repository.
 
 ## Citation and license
 
