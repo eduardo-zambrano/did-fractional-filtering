@@ -1,6 +1,6 @@
 # Difference-in-differences with fractional filtering
 
-Replication code and simulation results for Eduardo Zambrano’s *Difference-in-differences with fractional filtering* (2026). The original submission was titled *Fractional parallel trends*.
+Replication code and simulation results for Eduardo Zambrano’s *Difference-in-differences with fractional filtering* (2026).
 
 | In the online appendix | Experiment | Results |
 | --- | --- | --- |
@@ -30,7 +30,7 @@ This experiment requires NumPy and pandas. It runs 5,000 replications with seed 
 ## Citation and license
 
 ```bibtex
-@misc{zambrano_fractional_parallel_trends,
+@misc{zambrano_did_fractional_filtering,
   author = {Zambrano, Eduardo},
   title  = {Difference-in-differences with fractional filtering},
   year   = {2026},
