@@ -1,0 +1,35 @@
+{
+  "seed": 20261104,
+  "replications": 1000,
+  "n": 300,
+  "K": 10,
+  "d0": 0.45,
+  "burn_in": 400,
+  "observed_preperiods": 120,
+  "calibration_holdout": 20,
+  "calibration_dates": [
+    -109,
+    -20
+  ],
+  "calibration_outcomes": 90,
+  "d_grid": [
+    0.0,
+    1.0,
+    0.01
+  ],
+  "batch_size": 25,
+  "tau": 1.0,
+  "drift": 0.02,
+  "alpha_in_A_B": 0,
+  "numpy_version": "2.3.5",
+  "filtered_constant_multiplier": 0.21685128799069833,
+  "max_recurrence_error": 2.6645352591003757e-15,
+  "mean_d_hat": 0.4498400000000001,
+  "sd_d_hat": 0.005291729622949613,
+  "rmse_d_hat": 0.005291502622129186,
+  "grid_boundary_frequency": 0.0,
+  "case_C_mean_alpha_gap": 1.1247209293015261,
+  "case_C_predicted_bias_from_sample_alpha_gap": 0.2438971821491311,
+  "case_C_population_bias": 0.24469047572653332,
+  "case_B_population_bias": 1.1283791670955126
+}

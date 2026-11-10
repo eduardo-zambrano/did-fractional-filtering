@@ -1,54 +1,41 @@
-# Replication code for "Fractional parallel trends"
+# Difference-in-differences with fractional filtering
 
-This repository contains the Monte Carlo code and simulation output for the
-online appendix of:
+Replication code and simulation results for Eduardo Zambrano’s *Difference-in-differences with fractional filtering* (2026). The original submission was titled *Fractional parallel trends*.
 
-> Zambrano, E. "Fractional parallel trends."
+| In the online appendix | Experiment | Results |
+| --- | --- | --- |
+| Appendices B and C, Table C.1 | An exact finite-lag model with three treatment assignment rules and pretreatment calibration | [Full-precision table](exact_finite_k/output/summary.csv) · [LaTeX table](exact_finite_k/output/results_table.tex) |
+| Appendix A.4 | The original truncation experiment with 20, 30, and 40 filter lags | [Results by lag length](fractional_did_mc_results_with_K_robustness.csv) |
 
-The paper studies fractional parallel trends in difference-in-differences. It uses fractional differencing to define a family of identifying restrictions between levels comparisons and ordinary first-difference DiD. The Monte Carlo code illustrates the design in which the proposed restriction has content—selection on persistent untreated states with comparable future fractional innovations—and also shows that the method fails when selection is on future untreated innovations, as ordinary DiD does.
+## Reproduce Table C.1
 
-## Contents
+Run this command from the repository root.
 
-| File | Description |
-| --- | --- |
-| `run_fractional_did_mc.py` | Reproduces the appendix table. |
-| `fractional_did_mc_results.csv` | Main table (oracle fractional DiD at K = 30). |
-| `fractional_did_mc_results_with_K_robustness.csv` | Same design, K ∈ {20, 30, 40}. |
-
-## Reproducing the table
-
-Requirements: Python ≥ 3.9, NumPy, pandas. From this directory:
-
-```
-python run_fractional_did_mc.py
+```sh
+python3 exact_finite_k/run_exact_finite_k.py
 ```
 
-The script runs 5,000 replications in chunks of 1,000 and writes both CSV
-files to the working directory. The seed is fixed at `20260502`; output is
-deterministic up to NumPy's `default_rng` implementation.
+The archived outputs have been reproduced with Python 3.12 and NumPy 2.3.5. The script uses seed `20261104`, runs 1,000 replications, and writes its results to `exact_finite_k/output/`. The first-period treatment effect is one in all three designs. They differ in whether treatment depends on the pretreatment state, the future innovation, or a permanent component. See the [experiment notes](exact_finite_k/README.md) for the assignment rules, calibration procedure, and output files.
 
-## Design summary
+## Reproduce the truncation results in Appendix A.4
 
-- n = 300 units, T₀ = 80 pre-treatment periods, one post-treatment date.
-- Untreated outcome: `Y_it(0) = α_i + λ_t + u_it`, where
-  `(1 − B)^{d₀} u_it = ε_it` with `d₀ = 0.45`.
-- Estimators: levels (d = 0), oracle fractional DiD (d = d₀), standard
-  first-difference DiD (d = 1).
-- Two assignment mechanisms: selection on the persistent pre-treatment state
-  (DGP A) and on the future untreated innovation (DGP B).
+Run this command from the repository root.
 
-See the paper's online appendix for the full design and interpretation.
-
-## License
-
-MIT — see `LICENSE`.
-
-## Citation
-
+```sh
+python3 run_fractional_did_mc.py
 ```
-@article{zambrano_fractional_parallel_trends,
-  author  = {Zambrano, Eduardo},
-  title   = {Fractional parallel trends},
-  year    = {2026}
+
+This experiment requires NumPy and pandas. It runs 5,000 replications with seed `20260502` and writes two CSVs in the working directory. Appendix A.4 uses the [results by lag length](fractional_did_mc_results_with_K_robustness.csv). Under selection on the pretreatment state, the estimated biases of the oracle fractional estimator are 0.044, 0.027, and 0.017 for 20, 30, and 40 lags. The [original main table](fractional_did_mc_results.csv) reports the 30-lag specification.
+
+## Citation and license
+
+```bibtex
+@misc{zambrano_fractional_parallel_trends,
+  author = {Zambrano, Eduardo},
+  title  = {Difference-in-differences with fractional filtering},
+  year   = {2026},
+  note   = {Working paper}
 }
 ```
+
+This repository uses the [MIT license](LICENSE).
